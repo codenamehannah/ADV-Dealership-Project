@@ -5,17 +5,17 @@ public class Contract {
 
     private String name;
     private String email;
-    private String vehicle;
+    private Vehicle vehicle;
 
     private double totalPrice;
     private double monthlyPayment;
 
-    public Contract(String date, String name, String email, String vehicle, double tootalPrice, double monthlyPayment) {
+    public Contract(String date, String name, String email, Vehicle vehicle, double totalPrice, double monthlyPayment) {
         this.date = date;
         this.name = name;
         this.email = email;
         this.vehicle = vehicle;
-        this.totalPrice = tootalPrice;
+        this.totalPrice = totalPrice;
         this.monthlyPayment = monthlyPayment;
     }
 
@@ -43,11 +43,11 @@ public class Contract {
         this.email = email;
     }
 
-    public String getVehicle() {
+    public Vehicle getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(String vehicle) {
+    public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 

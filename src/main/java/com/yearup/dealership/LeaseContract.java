@@ -1,11 +1,34 @@
 package com.yearup.dealership;
 
-public class LeaseContract extends Contract {
+    public class LeaseContract extends Contract {
+        private double value;
+        private double fee;
 
+        public LeaseContract(String date, String name, String email, Vehicle vehicle, double totalPrice, double monthlyPayment, double value, double fee) {
+            super(date, name, email, vehicle, totalPrice, monthlyPayment);
+            this.value = getVehicle().getPrice() * 0.50;
+            this.fee = getVehicle().getPrice()*0.07;
+        }
 
-    @Override
+        public double getValue() {
+            return value;
+        }
+
+        public void setValue(double value) {
+            this.value = value;
+        }
+
+        public double getFee() {
+            return fee;
+        }
+
+        public void setFee(double fee) {
+            this.fee = fee;
+        }
+
+        @Override
     public double getTotalPrice() {
-        return (getVehicleSold().getPrice() - expectedEndingValue) + leaseFee;
+        return (getVehicle().getPrice() - value) + fee;
     }
 
     @Override
