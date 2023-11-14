@@ -192,6 +192,58 @@ import java.util.Scanner;
             for (Vehicle vehicle : vehicles) {
                 System.out.println(vehicle.toString());
             }
-        }
+            private void processcreateContract(){
+                System.out.println("Create Contract");
+                System.out.println("Enter Contract Type: ");
+                String type = scanner.nextLine();
 
+                System.out.println("Enter Date; ");
+                String date = scanner.nextLine();
+
+                System.out.println("enter Customer name: ");
+                String name = scanner.nextLine();
+
+                System.out.println("Enter customer email: ");
+                String email = scanner.nextLine();
+
+                System.out.println("Enter Vehicle VIN: ");
+                int vin = scanner.nextInt();
+                scanner.nextLine();
+
+
+                //Get Vehicle
+                Vehicle vehicle;
+                for(Vehicle v: vehicles) {
+                if (v.getVin() == vin) {
+                    vehicle = v;
+                    break;
+                }
+            }
+            if (type.equalsIgnoreCase("lease")) {
+                LeaseContract lease = new LeaseContract(date, name, email, vehicle);
+            } else if (type.equalsIgnoreCase("sale");
+                System.out.println("will thi vehicle be financed?");
+                String financeOption = scanner.nextLine();
+                boolean isFinanced = false;
+
+
+                if (FinanceOption.equalsIgnoreCase("yes");
+                isFinanced = true;
+                    SalesContract sale = new SalesContract(date, name, email, vehicle);
+
+            }
+            ContractFileManager cfm = new ContractFileManager();
+            cfm.saveContract(contract);
+
+
+            //ToRemove Vehicle
+            processRemoveVehicleRequest;
+
+            //ToUpdate Dealership
+            DealershipFileManager dfm = new DealershipFileManager();
+            dfm.saveDealership(dealership);
+
+        }
     }
+
+
