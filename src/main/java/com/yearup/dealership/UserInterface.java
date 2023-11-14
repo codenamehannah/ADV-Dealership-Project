@@ -9,6 +9,7 @@ import java.util.Scanner;
         private Scanner scanner;
 
         public UserInterface() {
+
             scanner = new Scanner(System.in);
         }
 
@@ -69,6 +70,7 @@ import java.util.Scanner;
         }
 
         public void processGetByPriceRequest() {
+            System.out.println("\nVehicle by Price");
             System.out.print("Enter minimum price: ");
             double min = scanner.nextDouble();
             System.out.print("Enter maximum price: ");
@@ -87,6 +89,7 @@ import java.util.Scanner;
         }
 
         public void processGetByYearRequest() {
+            System.out.println("\nVehicle by Year");
             System.out.print("Enter minimum year: ");
             int min = scanner.nextInt();
             System.out.print("Enter maximum year: ");
@@ -96,6 +99,7 @@ import java.util.Scanner;
         }
 
         public void processGetByColorRequest() {
+            System.out.println("\nVehicle by Color");
             System.out.print("Enter color: ");
             String color = scanner.nextLine();
             List<Vehicle> vehicles = dealership.getVehiclesByColor(color);
@@ -103,6 +107,7 @@ import java.util.Scanner;
         }
 
         public void processGetByMileageRequest() {
+            System.out.println("\nVehicle by Mileage");
             System.out.print("Enter minimum mileage: ");
             int min = scanner.nextInt();
             System.out.print("Enter maximum mileage: ");
@@ -112,6 +117,7 @@ import java.util.Scanner;
         }
 
         public void processGetByVehicleTypeRequest() {
+            System.out.println("\nVehicle by Type");
             System.out.print("Enter vehicle type: ");
             String vehicleType = scanner.nextLine();
             List<Vehicle> vehicles = dealership.getVehiclesByType(vehicleType);
@@ -119,11 +125,13 @@ import java.util.Scanner;
         }
 
         public void processGetAllVehiclesRequest() {
+            System.out.println("\nAll Vehicles");
             List<Vehicle> vehicles = dealership.getAllVehicles();
             displayVehicles(vehicles);
         }
 
         public void processAddVehicleRequest() {
+            System.out.println("\nAdd Vehicle");
             System.out.print("Enter vehicle vin: ");
             int vin = scanner.nextInt();
             scanner.nextLine();
@@ -161,6 +169,7 @@ import java.util.Scanner;
         }
 
         public void processRemoveVehicleRequest() {
+            System.out.println("\nRemove Vehicle");
             System.out.print("Enter the VIN of the vehicle you wish to remove: ");
             int vin = scanner.nextInt();
 
@@ -188,12 +197,30 @@ import java.util.Scanner;
             dealership = manager.getDealership();
         }
 
-        private void displayVehicles(List<Vehicle> vehicles) {
+        private Vehicle displayVehicles(List<Vehicle> vehicles) {
             for (Vehicle vehicle : vehicles) {
                 System.out.println(vehicle.toString());
             }
-            private void processcreateContract(){
-                System.out.println("Create Contract");
+
+            private Vehicle getVehicleSold(List<Vehicle> vehicles, int vin){
+                boolean found = false;
+                Vehicle vehicle = null;
+                for(Vehicle v : vehicles) {
+                    if (v.getVin() == vin) {
+                        vehicle = v;
+                        found = true;
+                        break;
+                    }
+                } if (!found) {
+                    System.out.println("/n invalid vin");
+                }
+                return vehicle;
+            }
+            private void processCreateContract(){
+                List<Vehicle> vehicles = dealership.getAllVehicles();
+                Vehicle vehicle = null;
+
+                System.out.println("\nCreate Contract");
                 System.out.println("Enter Contract Type: ");
                 String type = scanner.nextLine();
 
