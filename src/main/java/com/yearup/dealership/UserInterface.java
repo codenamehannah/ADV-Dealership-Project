@@ -6,7 +6,7 @@ import java.util.Scanner;
     public class UserInterface {
 
         private Dealership dealership;
-        private Scanner scanner;
+        private final Scanner scanner;
 
         public UserInterface() {
 
@@ -197,7 +197,7 @@ import java.util.Scanner;
             dealership = manager.getDealership();
         }
 
-        private Vehicle displayVehicles(List<Vehicle> vehicles) {
+        private void displayVehicles(List<Vehicle> vehicles) {
             for (Vehicle vehicle : vehicles) {
                 System.out.println(vehicle.toString());
             }
@@ -214,7 +214,7 @@ import java.util.Scanner;
                 } if (!found) {
                     System.out.println("/n invalid vin");
                 }
-                return vehicle;
+                return;
             }
             private void processCreateContract(){
                 List<Vehicle> vehicles = dealership.getAllVehicles();
@@ -251,20 +251,19 @@ import java.util.Scanner;
             } else if (type.equalsIgnoreCase("sale");
                 System.out.println("will thi vehicle be financed?");
                 String financeOption = scanner.nextLine();
-                boolean isFinanced = false;
+                boolean isFinanced = financeOption.equalsIgnoreCase("yes");
 
+                SalesContract sale = new SalesContract(date, name, email, vehicle, isFinanced);
 
-                if (FinanceOption.equalsIgnoreCase("yes");
-                isFinanced = true;
-                    SalesContract sale = new SalesContract(date, name, email, vehicle);
-
-            }
-            ContractFileManager cfm = new ContractFileManager();
-            cfm.saveContract(contract);
+                DealershipFileManager cfm = new DealershipFileManager();
+                Object contract;
+                cfm.saveContract(contract);
+            } else {
+                System.out.println("failed to generate contract.");
 
 
             //ToRemove Vehicle
-            processRemoveVehicleRequest;
+            dealership.removeVehicle((Vehicle) vehicles);
 
             //ToUpdate Dealership
             DealershipFileManager dfm = new DealershipFileManager();

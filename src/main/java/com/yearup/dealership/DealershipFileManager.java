@@ -66,4 +66,6 @@ import java.util.ArrayList;
             }
         }
 
+        public void saveContract(Object contract) {
+        }
     }
